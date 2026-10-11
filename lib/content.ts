@@ -113,7 +113,7 @@ export const experience: Role[] = [
     type: "Full-time",
     period: "Feb 2025 — Present",
     duration: "1 yr 9 mos",
-    place: "Adamjee EPZ, Narayanganj, Bangladesh",
+    place: "Adamjee EPZ, Narayanganj, Bangladesh · On-site and remote",
     accent: "#d99a2b",
     bullets: [
       "Designed and built 20+ live Odoo 17 dashboards and custom modules across inventory, purchase, sales, manufacturing and accounts, giving management same-day visibility instead of a report compiled by hand the following week.",
