@@ -1,122 +1,212 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paper and ink */
-  --color-paper: #faf8f3;
-  --color-paper-2: #f4f1e9;
-  --color-paper-3: #ece7db;
-  --color-ink: #16140f;
-  --color-ink-soft: #3b362d;
-  --color-muted: #6e6658;
-  --color-faint: #8f8878;
-  --color-line: #e2dccf;
-  --color-line-soft: #ebe6da;
-  --color-accent: #9a4a2b;
-  --color-accent-soft: #c4a085;
+  /* Semantic tokens — the values flip with the theme, the names never do. */
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-panel: var(--panel);
+  --color-content: var(--content);
+  --color-content-soft: var(--content-soft);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-accent: var(--accent);
 
-  --font-display: var(--font-display), ui-serif, Georgia, serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
 
-  --tracking-label: 0.18em;
+  --tracking-label: 0.2em;
+}
+
+/* Dark is the default — the theme script only ever has to add "light". */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #0b0b0b;
+  --surface-2: #101010;
+  --panel: #151515;
+  --content: #ede9e3;
+  --content-soft: #c9c5bf;
+  --muted: #8d8b85;
+  --faint: #5e5c57;
+  --line: #232322;
+  --line-soft: #1a1a19;
+  --accent: #e8452a;
+  --grid: rgba(255, 255, 255, 0.025);
+  --glow: 0.5;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --surface: #f5f3ee;
+  --surface-2: #efece5;
+  --panel: #ffffff;
+  --content: #111110;
+  --content-soft: #35332f;
+  --muted: #5f5d57;
+  --faint: #8d8a82;
+  --line: #ddd9d0;
+  --line-soft: #e8e4db;
+  --accent: #c2371d;
+  --grid: rgba(0, 0, 0, 0.035);
+  --glow: 0.22;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6.5rem;
+    scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background-color: var(--color-paper);
-    color: var(--color-ink);
+    background-color: var(--surface);
+    color: var(--content);
     font-family: var(--font-sans);
-    font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  /* A whisper of paper grain. */
+  /* The faint engineering grid that runs under the whole page. */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: 60;
+    z-index: 0;
     pointer-events: none;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 96px 96px;
   }
 
   ::selection {
-    background-color: var(--color-accent);
-    color: var(--color-paper);
+    background-color: var(--accent);
+    color: #fff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 2px;
   }
 
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.015em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
   }
 }
 
 @layer components {
-  /* The small uppercase mono labels that run through the page. */
+  /* The uppercase mono micro-labels that run through the page. */
   .label {
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     line-height: 1;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
-    color: var(--color-faint);
+    color: var(--faint);
   }
 
-  /* A link whose underline grows in on hover. */
-  .underline-grow {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    background-size: 0% 1px;
-    transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    padding-bottom: 1px;
+  /* 02 / EXPERIENCE */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--faint);
   }
 
-  .underline-grow:hover,
-  .underline-grow:focus-visible {
-    background-size: 100% 1px;
+  /* The big slab headings. */
+  .h-section {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    font-size: clamp(2.5rem, 7vw, 5.25rem);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--line);
+    padding: 0.7rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--content);
+    transition:
+      border-color 0.3s,
+      color 0.3s,
+      background-color 0.3s;
+  }
+
+  .btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .btn-solid {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .btn-solid:hover {
+    background-color: transparent;
+    color: var(--accent);
+  }
+
+  /* The toggle shows the mode you would switch to, chosen by CSS so the
+     server and the client never disagree about which icon to render. */
+  :root[data-theme="dark"] .theme-icon-light,
+  :root[data-theme="light"] .theme-icon-dark {
+    display: none;
   }
 }
 
 @layer utilities {
-  /* Scroll-triggered entrance, applied by the Reveal component. */
   .reveal {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(16px);
     transition:
-      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
   }
 
+  /* Dropping will-change once the entrance is done matters: it stops the
+     element being a containing block for anything fixed inside it. */
   .reveal-in {
     opacity: 1;
     transform: none;
+    will-change: auto;
   }
 
   .text-balance {
     text-wrap: balance;
   }
-
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  /* Hides a scrollbar without losing the scrolling. */
+  .no-bar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-bar::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -124,7 +214,6 @@
   html {
     scroll-behavior: auto;
   }
-
   *,
   *::before,
   *::after {
@@ -132,7 +221,6 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
   .reveal {
     opacity: 1;
     transform: none;

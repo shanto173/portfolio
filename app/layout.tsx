@@ -1,22 +1,17 @@
-import type { Metadata } from "next";
-import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo, Inter, JetBrains_Mono } from "next/font/google";
 import { person, hero } from "@/lib/content";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
-const display = Instrument_Serif({
+const display = Archivo({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["600", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
 
-const sans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
@@ -30,10 +25,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
-  title: {
-    default: title,
-    template: `%s — ${person.name}`,
-  },
+  title: { default: title, template: `%s — ${person.name}` },
   description,
   keywords: [
     "Ariful Islam",
@@ -42,7 +34,6 @@ export const metadata: Metadata = {
     "Odoo 17",
     "ERP",
     "supply chain analytics",
-    "data science",
     "React Native",
     "NestJS",
     "Deggendorf",
@@ -59,11 +50,7 @@ export const metadata: Metadata = {
     url: "/",
     locale: "en_GB",
   },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description: hero.headline,
-  },
+  twitter: { card: "summary_large_image", title, description: hero.headline },
   robots: {
     index: true,
     follow: true,
@@ -71,11 +58,32 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0b0b0b" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f3ee" },
+  ],
+};
+
+/**
+ * Applies the stored theme before the first paint, so a light-mode visitor
+ * never sees a black flash. Dark is the default when nothing is stored.
+ */
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t}}catch(e){}})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="antialiased">
         {/* Without JavaScript nothing would ever be revealed, so show it all. */}
         <noscript>

@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ariful Islam — CV</title>
+    <style>
+      /* One A4 page. Open in a browser and print to PDF at A4, no margins,
+         "Background graphics" on, to regenerate public/cv/Ariful-Islam-CV.pdf. */
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      :root {
+        --accent: #1f5f6b;
+        --ink: #14181a;
+        --soft: #3c4448;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 210mm;
+      }
+
+      body {
+        font-family: "Palatino Linotype", Palatino, Georgia, serif;
+        color: var(--ink);
+        font-size: 8.0pt;
+        line-height: 1.29;
+        padding: 9mm 12mm 6mm;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* Header */
+      .name {
+        text-align: center;
+        font-size: 21pt;
+        letter-spacing: 0.22em;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .tagline {
+        text-align: center;
+        font-style: italic;
+        font-size: 9pt;
+        color: var(--accent);
+        margin-top: 2.2mm;
+      }
+
+      .rule-top {
+        border-top: 1.1pt solid var(--accent);
+        margin: 2.2mm 0 1.3mm;
+      }
+
+      .contact {
+        text-align: center;
+        font-size: 8.3pt;
+        letter-spacing: 0.02em;
+      }
+
+      .contact a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .rule-bottom {
+        border-top: 1.1pt solid var(--accent);
+        margin: 1.6mm 0 0;
+      }
+
+      /* Section heading with rules either side */
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 3mm;
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 2.5mm 0 1.2mm;
+        white-space: nowrap;
+      }
+
+      h2::before,
+      h2::after {
+        content: "";
+        flex: 1;
+        border-top: 0.6pt solid var(--accent);
+      }
+
+      p.summary {
+        text-align: justify;
+      }
+
+      /* Entries */
+      .entry {
+        margin-top: 1.5mm;
+      }
+
+      .entry:first-of-type {
+        margin-top: 0;
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 4mm;
+      }
+
+      .role {
+        font-weight: 700;
+        font-size: 8.8pt;
+      }
+
+      .org {
+        color: var(--accent);
+      }
+
+      .when {
+        font-style: italic;
+        font-size: 7.9pt;
+        white-space: nowrap;
+        color: var(--soft);
+      }
+
+      ul {
+        list-style: none;
+        margin-top: 0.7mm;
+      }
+
+      li {
+        position: relative;
+        padding-left: 3.4mm;
+        margin-top: 0.5mm;
+      }
+
+      li::before {
+        content: "•";
+        position: absolute;
+        left: 0.6mm;
+        color: var(--accent);
+      }
+
+      b {
+        font-weight: 700;
+      }
+
+      .accent {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      /* Two-column blocks */
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 7mm;
+      }
+
+      .cols ul {
+        margin-top: 0;
+      }
+
+      /* References */
+      .refs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 7mm;
+      }
+
+      .ref-name {
+        font-weight: 700;
+      }
+
+      .ref-line {
+        color: var(--soft);
+      }
+
+      .ref-line a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="name">ARIFUL ISLAM</div>
+    <div class="tagline">
+      Software Developer &bull; Odoo ERP &amp; Supply-Chain Analytics &bull; AI/ML &amp;
+      Full-Stack Development
+    </div>
+
+    <div class="rule-top"></div>
+    <div class="contact">
+      Deggendorf, Germany &nbsp;|&nbsp; +49 176 67221612 &nbsp;|&nbsp;
+      <a href="mailto:ariful81848@gmail.com">ariful81848@gmail.com</a>
+      &nbsp;|&nbsp; <a href="https://github.com/shanto173">github.com/shanto173</a>
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/ariful-islam-9345041b9/">linkedin.com/in/ariful-islam</a>
+    </div>
+    <div class="rule-bottom"></div>
+
+    <h2>Professional Summary</h2>
+    <p class="summary">
+      Software developer with a data-science foundation who turns manual business
+      reporting into live, reliable software. At a zipper and metal-trims
+      manufacturer, built <b>20+</b> production Odoo dashboards spanning inventory,
+      purchase, sales, manufacturing and accounts, replacing spreadsheet reporting
+      and helping cut material shortages by <b>40%</b>. Currently contributes to an
+      end-to-end encrypted messaging and booking platform (React Native, NestJS,
+      PostgreSQL) while pursuing an MSc in Artificial Intelligence and Data Science
+      at Deggendorf Institute of Technology, Germany.
+    </p>
+
+    <h2>Professional Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div>
+          <span class="role">Software Developer</span> |
+          <span class="org">OmniDevX Studio (Remote)</span>
+        </div>
+        <div class="when">Jun 2026 &ndash; Present</div>
+      </div>
+      <ul>
+        <li>
+          Building <b>Bravo Secure</b>, an end-to-end encrypted messenger on the
+          Signal Protocol (X3DH, Double Ratchet, Sealed Sender) with multi-device
+          delivery, message search and an MFA-protected encrypted file vault &mdash;
+          full stack across React Native, NestJS and PostgreSQL.
+        </li>
+        <li>
+          Real-time group voice and video calls (WebRTC, mediasoup) scaled from
+          <b>6 to 10 participants</b>, with killed-app ringing through CallKit /
+          Android Telecom; Executive Protection missions with live GPS, Mapbox
+          navigation, SOS, Stripe escrow and a multi-currency wallet.
+        </li>
+        <li>
+          Fixed <b>400+</b> production bugs from device log to root cause to
+          regression test, contributing to a suite of about <b>1,430 tests</b> that
+          raised messenger coverage from <b>51% to 74%</b>.
+        </li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div>
+          <span class="role">Growth &amp; Automation</span> |
+          <span class="org">Exzellent (Cottbus, Germany)</span>
+        </div>
+        <div class="when">Sep 2026 &ndash; Present</div>
+      </div>
+      <ul>
+        <li>
+          Work across a language-learning platform that ships to web, Android and
+          iOS from one codebase &mdash; React 19 front end, Node API of 26 modules,
+          AI tutoring and speech practice over an LLM and Whisper.
+        </li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div>
+          <span class="role">Executive Engineer (Software Developer)</span> |
+          <span class="org">Tex Fasteners (BD) Ltd. / Tex Zippers</span>
+        </div>
+        <div class="when">Feb 2025 &ndash; Present</div>
+      </div>
+      <ul>
+        <li>
+          Designed and built <b>20+ live Odoo 17 dashboards</b> (Python,
+          OWL/JavaScript, XML, PostgreSQL) across Inventory, Purchase, Sales,
+          Manufacturing and Accounts, giving management same-day visibility of
+          stock, orders, production and receivables.
+        </li>
+        <li>
+          Replaced manually compiled Excel / Google Sheets reports with live Odoo
+          boards and automated Python / GitHub Actions pipelines, saving
+          <b>2+ hours</b> of manual work every day.
+        </li>
+        <li>
+          Built supply-chain planning tools (SO vs RM availability, forecast vs RM
+          demand plan, consumption-driven stock runway, goods-in-transit) and demand
+          planning / ROL models that reduced material shortages by <b>40%</b>, all
+          driven by a single RM Item Master shared by every planning board.
+        </li>
+        <li>
+          Rebuilt monthly RM ageing history back to <b>2021</b> and corrected
+          production-pending and LC-received logic so the invoice tracker and the
+          production board reconcile order by order.
+        </li>
+        <li>
+          Awarded <b>Best Performer &ndash; Q3</b> for operational excellence in
+          supply chain planning and the move from analyst to developer role.
+        </li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div>
+          <span class="role">Software Developer</span> |
+          <span class="org">GAOTek Inc. (Remote, New York)</span>
+        </div>
+        <div class="when">May 2023 &ndash; Aug 2023</div>
+      </div>
+      <ul>
+        <li>
+          Developed and customised Odoo modules in Python and XML; supported
+          debugging, testing and module configuration. Worked with PostgreSQL, took
+          part in code reviews and wrote technical documentation.
+        </li>
+      </ul>
+    </div>
+
+    <h2>Technical Skills</h2>
+    <div class="cols">
+      <ul>
+        <li><b>Languages:</b> Python, JavaScript, TypeScript, SQL, MATLAB</li>
+        <li>
+          <b>ERP (Odoo 17):</b> custom modules, ORM, OWL components, QWeb / XML
+          views, scheduled jobs, record rules, Odoo.sh
+        </li>
+        <li>
+          <b>Backend &amp; databases:</b> NestJS (Node.js), REST APIs, PostgreSQL,
+          MongoDB, MS-SQL
+        </li>
+        <li><b>Web &amp; mobile:</b> React, Next.js, React Native, Capacitor</li>
+      </ul>
+      <ul>
+        <li>
+          <b>Data &amp; BI:</b> pandas, NumPy, Matplotlib, Power BI, Power Query,
+          Looker Studio, Google Sheets API
+        </li>
+        <li>
+          <b>Machine learning &amp; AI:</b> TensorFlow, Random Forest, XGBoost,
+          Isolation Forest, LangChain, RAG, MCP, GenAI
+        </li>
+        <li>
+          <b>Real-time &amp; security:</b> WebRTC, Signal Protocol (E2EE), Stripe,
+          Mapbox
+        </li>
+        <li><b>Tools:</b> Git / GitHub, GitHub Actions, Vercel, Docker, Claude Code</li>
+      </ul>
+    </div>
+
+    <h2>Featured Projects</h2>
+    <ul>
+      <li>
+        <b>Bravo Secure</b> &mdash; encrypted booking platform and Slack-style team
+        messenger for security personnel (private repository).
+      </li>
+      <li>
+        <b>Inventory Data Automation</b> &mdash; Python, GitHub Actions and Google
+        APIs pipeline feeding live Looker Studio and Google Sheets reports.
+        <span class="org">github.com/shanto173/inventory_data_automation</span>
+      </li>
+      <li>
+        <b>Health Monitoring System</b> &mdash; Random Forest on wearable-device data
+        predicting heart disease and diabetes; <b>87%</b> accuracy.
+        <b>Fraud Detection System</b> &mdash; Isolation Forest and XGBoost on
+        credit-card transactions; false positives reduced by <b>15%</b>.
+      </li>
+    </ul>
+
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div>
+          <span class="role">MSc, Artificial Intelligence and Data Science</span> |
+          <span class="org">Deggendorf Institute of Technology</span>
+        </div>
+        <div class="when">Mar 2026 &ndash; Mar 2028 (expected)</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div>
+          <span class="role">BSc, Computer Science and Engineering</span> |
+          <span class="org">Notre Dame University Bangladesh</span>
+        </div>
+        <div class="when">2020 &ndash; 2023</div>
+      </div>
+      <ul>
+        <li>
+          CGPA 3.55. Higher Secondary Certificate, Govt. Science College, Dhaka (GPA
+          4.50); Secondary School Certificate, Motijheel Model School &amp; College
+          (GPA 5.00).
+        </li>
+      </ul>
+    </div>
+
+    <h2>Awards &amp; Languages</h2>
+    <div class="cols">
+      <ul>
+        <li><b>Best Performer &ndash; Q3</b>, Tex Fasteners (BD) Ltd.</li>
+        <li>IELTS 7.0 &mdash; British Council</li>
+      </ul>
+      <ul>
+        <li>
+          <b>Languages:</b> Bengali (native), English (C1 &ndash; B2), German
+          (<b>A2</b>)
+        </li>
+      </ul>
+    </div>
+
+    <h2>References</h2>
+    <div class="refs">
+      <div>
+        <div class="ref-name">Shahid Hossain</div>
+        <div class="ref-line">
+          Assistant Vice President, Tex Fasteners (BD) Ltd.
+        </div>
+        <div class="ref-line">
+          +880 1918-990450 &nbsp;|&nbsp;
+          <a href="mailto:shahid.hossain@texzipperbd.com">shahid.hossain@texzipperbd.com</a>
+        </div>
+      </div>
+      <div>
+        <div class="ref-name">Ranak Debnath</div>
+        <div class="ref-line">Founder &amp; CEO, OmniDevX Studio</div>
+        <div class="ref-line">
+          +880 1799-306165 &nbsp;|&nbsp;
+          <a href="mailto:piyaldeb87@gmail.com">piyaldeb87@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

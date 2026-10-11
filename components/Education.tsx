@@ -5,7 +5,7 @@ import Section from "./Section";
 function List({ title, items }: { title: string; items: readonly string[] }) {
   return (
     <div className="border-t border-line pt-5">
-      <h3 className="label text-ink">{title}</h3>
+      <h3 className="label text-accent">{title}</h3>
       <ul className="mt-4 space-y-2.5">
         {items.map((item) => (
           <li key={item} className="text-[0.95rem] leading-relaxed text-muted">
@@ -26,21 +26,22 @@ export default function Education() {
       title="Studying it as well as doing it."
       alt
     >
-      <ol className="space-y-12">
-        {education.map((entry) => (
+      <ol>
+        {education.map((entry, i) => (
           <li key={entry.degree}>
-            <Reveal className="grid gap-5 border-t border-line pt-7 md:grid-cols-[0.28fr_0.72fr] md:gap-12">
-              <p className="label text-ink">{entry.period}</p>
+            <Reveal
+              className={`grid gap-4 border-b border-line py-8 md:grid-cols-[14rem_1fr] md:gap-10 ${
+                i === 0 ? "border-t" : ""
+              }`}
+            >
+              <p className="label text-muted">{entry.period}</p>
               <div>
-                <h3 className="font-display text-[clamp(1.35rem,2.4vw,1.8rem)] leading-tight">
+                <h3 className="font-display text-[1.35rem] font-bold leading-tight tracking-tight md:text-[1.7rem]">
                   {entry.degree}
                 </h3>
-                <p className="mt-2 text-[0.95rem] text-accent">
-                  {entry.school}
-                  <span className="mx-2 text-line" aria-hidden>
-                    /
-                  </span>
-                  <span className="text-muted">{entry.place}</span>
+                <p className="mt-2 text-[0.975rem]">
+                  <span className="text-accent">{entry.school}</span>
+                  <span className="text-faint"> · {entry.place}</span>
                 </p>
                 {"note" in entry && entry.note && (
                   <p className="mt-4 max-w-2xl text-[0.9rem] leading-relaxed text-muted text-pretty">
@@ -53,14 +54,14 @@ export default function Education() {
         ))}
       </ol>
 
-      <div className="mt-16 grid gap-10 md:grid-cols-3 md:gap-8">
+      <div className="mt-14 grid gap-9 md:grid-cols-3 md:gap-8">
         <Reveal>
           <List title="Awards" items={credentials.awards} />
         </Reveal>
-        <Reveal delay={80}>
+        <Reveal delay={70}>
           <List title="Certifications" items={credentials.certifications} />
         </Reveal>
-        <Reveal delay={160}>
+        <Reveal delay={140}>
           <List title="Languages" items={credentials.languages} />
         </Reveal>
       </div>

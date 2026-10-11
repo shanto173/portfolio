@@ -1,104 +1,89 @@
 import Image from "next/image";
-import { person, hero, about } from "@/lib/content";
+import { person, hero, boot } from "@/lib/content";
+import ParticleName from "./ParticleName";
 import Reveal from "./Reveal";
 
 export default function Hero() {
   return (
-    <section id="profile" aria-labelledby="profile-heading">
-      <div className="mx-auto max-w-[1180px] px-6 pb-20 pt-28 md:px-10 md:pb-28 md:pt-40">
+    <section id="system" aria-labelledby="system-heading" className="relative">
+      <div className="mx-auto max-w-[1320px] px-5 pb-20 pt-24 md:px-8 md:pb-28 md:pt-28">
         <Reveal>
-          <div className="flex items-baseline gap-4 border-t border-line pt-5">
-            <span className="label text-accent">01</span>
-            <span className="label">Profile</span>
-            <span className="label ml-auto hidden sm:inline">
-              {person.location}
-            </span>
-          </div>
+          <p className="eyebrow">
+            <span className="text-accent">01</span>
+            <span aria-hidden>/</span>
+            <span>System</span>
+          </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-14 lg:mt-16 lg:grid-cols-[1.5fr_0.8fr] lg:gap-20">
-          <div>
-            <Reveal>
-              <h1
-                id="profile-heading"
-                className="max-w-[16ch] font-display text-[clamp(2.6rem,7.2vw,5.1rem)] leading-[1.02] text-balance"
-              >
-                {hero.headlineLead}{" "}
-                <em className="not-italic text-accent">{hero.headlineEmphasis}</em>
-              </h1>
-            </Reveal>
+        <h1 id="system-heading" className="sr-only">
+          {person.name} — {person.role}
+        </h1>
 
-            <Reveal delay={90}>
-              <p className="mt-9 max-w-xl text-[1.125rem] leading-relaxed text-ink-soft text-pretty">
-                {hero.standfirst}
-              </p>
-            </Reveal>
+        <div className="mt-10 md:mt-14">
+          <ParticleName lines={["ARIFUL", "ISLAM"]} />
+        </div>
 
-            <Reveal delay={160}>
-              <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
-                <span className="inline-flex items-center gap-2 label text-ink">
-                  <span
-                    aria-hidden
-                    className="inline-block h-1.5 w-1.5 rounded-full bg-accent"
-                  />
-                  {person.status}
-                </span>
-                <span className="label">{person.disciplines}</span>
-              </div>
-            </Reveal>
+        <div className="mt-10 grid gap-10 border-t border-line pt-8 lg:grid-cols-[1.6fr_1fr] lg:gap-16 lg:pt-10">
+          {/* Grid items default to min-width:auto, which stops the track ever
+              shrinking below its content. These two need to shrink on a phone. */}
+          <Reveal className="min-w-0">
+            <p className="max-w-2xl text-[1.0625rem] leading-relaxed text-content-soft text-pretty md:text-[1.1875rem]">
+              {hero.lede}{" "}
+              <span className="text-accent">{hero.ledeAccent}</span>
+              {hero.ledeRest}
+            </p>
 
-            <Reveal delay={220}>
-              <div className="mt-10 flex flex-wrap items-center gap-3">
-                <a
-                  href={`mailto:${person.email}`}
-                  className="label border border-ink bg-ink px-5 py-3 text-paper transition-opacity duration-300 hover:opacity-85"
-                >
-                  Write to me
-                </a>
-                <a
-                  href={person.cv}
-                  download
-                  className="label border border-line px-5 py-3 text-ink transition-colors duration-300 hover:border-ink"
-                >
-                  Download CV ↓
-                </a>
-                <a
-                  href="#work"
-                  className="label border border-transparent px-2 py-3 text-ink"
-                >
-                  <span className="underline-grow">See the work →</span>
-                </a>
-              </div>
-            </Reveal>
-          </div>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a href={`mailto:${person.email}`} className="btn btn-solid">
+                Write to me
+              </a>
+              <a href={person.cv} download className="btn">
+                Download CV ↓
+              </a>
+              <a href="#projects" className="btn">
+                See the work →
+              </a>
+            </div>
+          </Reveal>
 
-          <Reveal delay={120} className="lg:pt-3">
-            <figure>
-              <div className="relative aspect-[4/5] w-full max-w-[340px] overflow-hidden bg-paper-3 ring-1 ring-line lg:max-w-none">
+          <Reveal delay={120} className="min-w-0">
+            <div className="flex items-start gap-5">
+              <div className="relative h-20 w-20 shrink-0 overflow-hidden border border-line md:h-24 md:w-24">
                 <Image
                   src={person.portrait}
                   alt={`${person.name}, software developer`}
                   fill
                   priority
-                  sizes="(min-width: 1024px) 340px, (min-width: 640px) 340px, 72vw"
-                  className="object-cover object-top"
+                  sizes="96px"
+                  className="object-cover"
                 />
               </div>
-              <figcaption className="mt-4 max-w-[340px] label leading-[1.7] lg:max-w-none">
-                {person.name} — {person.location}
-              </figcaption>
-            </figure>
-          </Reveal>
-        </div>
 
-        <div className="mt-20 grid gap-8 border-t border-line pt-10 md:mt-28 md:grid-cols-3 md:gap-12">
-          {about.map((paragraph, i) => (
-            <Reveal key={i} delay={i * 80}>
-              <p className="text-[0.975rem] leading-[1.75] text-muted text-pretty">
-                {paragraph}
-              </p>
-            </Reveal>
-          ))}
+              <dl className="min-w-0 flex-1 space-y-2.5">
+                {boot.map((row) => (
+                  <div key={row.label} className="flex items-baseline gap-3">
+                    <dt className="label w-20 shrink-0">{row.label}</dt>
+                    <dd className="label min-w-0 flex-1 truncate text-content-soft">
+                      {row.value}
+                    </dd>
+                  </div>
+                ))}
+                <div className="flex items-baseline gap-3 pt-1">
+                  <dt className="label w-20 shrink-0">Status</dt>
+                  <dd className="label flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1.5 text-content">
+                    <span
+                      aria-hidden
+                      className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                    />
+                    <span className="whitespace-nowrap">{person.status}</span>
+                    <span className="whitespace-nowrap">
+                      · {person.locationShort}
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
