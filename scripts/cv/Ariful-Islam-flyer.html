@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ariful Islam — flyer</title>
+    <style>
+      /* One A4 page, dark, matching the site. Print to PDF at A4, no margins,
+         background graphics ON → public/cv/Ariful-Islam-flyer.pdf */
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      :root {
+        --bg: #0b0b0b;
+        --fg: #ede9e3;
+        --muted: #8d8b85;
+        --faint: #5e5c57;
+        --line: #262625;
+        --accent: #e8452a;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 210mm;
+        
+        background: var(--bg);
+        color: var(--fg);
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        font-size: 9pt;
+        line-height: 1.45;
+        padding: 10mm 12mm 7mm;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .mono {
+        font-family: "JetBrains Mono", Consolas, "Courier New", monospace;
+        font-size: 7pt;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--faint);
+      }
+
+      .accent {
+        color: var(--accent);
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        border-bottom: 0.7pt solid var(--line);
+        padding-bottom: 3mm;
+      }
+
+      h1 {
+        font-size: 36pt;
+        font-weight: 800;
+        letter-spacing: -0.045em;
+        line-height: 0.92;
+        margin-top: 5mm;
+      }
+
+      .lede {
+        margin-top: 4mm;
+        max-width: 150mm;
+        font-size: 10pt;
+        line-height: 1.5;
+        color: #cfcbc5;
+      }
+
+      h2 {
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-size: 7pt;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--faint);
+        border-top: 0.7pt solid var(--line);
+        padding-top: 2mm;
+        margin-top: 5mm;
+        font-weight: 400;
+      }
+
+      h2 b {
+        color: var(--accent);
+        font-weight: 400;
+      }
+
+      /* Impact row */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5mm;
+        margin-top: 3mm;
+      }
+
+      .stat .n {
+        font-size: 21pt;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+
+      .stat .l {
+        margin-top: 1.5mm;
+        font-size: 8pt;
+        color: var(--muted);
+        line-height: 1.3;
+      }
+
+      /* Services */
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3mm 7mm;
+        margin-top: 3mm;
+      }
+
+      .svc .t {
+        font-weight: 700;
+        font-size: 9.5pt;
+      }
+
+      .svc .d {
+        color: var(--muted);
+        font-size: 8.2pt;
+        line-height: 1.4;
+        margin-top: 1mm;
+      }
+
+      /* Work */
+      .work {
+        display: flex;
+        justify-content: space-between;
+        gap: 6mm;
+        border-bottom: 0.5pt solid var(--line);
+        padding: 2mm 0;
+      }
+
+      .work .t {
+        font-weight: 700;
+        font-size: 9.5pt;
+      }
+
+      .work .d {
+        color: var(--muted);
+        font-size: 8.2pt;
+        margin-top: 0.8mm;
+      }
+
+      .work .tags {
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-size: 6.6pt;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        align-self: center;
+      }
+
+      footer {
+        margin-top: 5mm;
+        border-top: 0.7pt solid var(--line);
+        padding-top: 3mm;
+        display: flex;
+        justify-content: space-between;
+        gap: 5mm;
+        flex-wrap: wrap;
+      }
+
+      footer .c {
+        font-size: 8.6pt;
+      }
+
+      footer .c span {
+        display: block;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-size: 6.6pt;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--faint);
+        margin-bottom: 1mm;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="mono">Ariful Islam &mdash; Software Developer</span>
+      <span class="mono">Deggendorf, DE &bull; Open to work</span>
+    </header>
+
+    <h1>I turn manual<br />business reporting<br />into <span class="accent">live software.</span></h1>
+
+    <p class="lede">
+      Odoo ERP and supply-chain analytics, encrypted mobile platforms and applied
+      AI. Twenty-plus live dashboards on a factory floor, an end-to-end encrypted
+      messenger, and assistants that answer from a database rather than a guess.
+    </p>
+
+    <h2><b>01</b> &nbsp;/&nbsp; Impact, measured in production</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="n">20+</div>
+        <div class="l">live Odoo dashboards</div>
+      </div>
+      <div class="stat">
+        <div class="n accent">40%</div>
+        <div class="l">fewer material shortages</div>
+      </div>
+      <div class="stat">
+        <div class="n">1,430</div>
+        <div class="l">tests; coverage 51% &rarr; 74%</div>
+      </div>
+      <div class="stat">
+        <div class="n">400+</div>
+        <div class="l">production bugs fixed</div>
+      </div>
+    </div>
+
+    <h2><b>02</b> &nbsp;/&nbsp; What I am hired for</h2>
+    <div class="grid2">
+      <div class="svc">
+        <div class="t">Odoo ERP development &amp; dashboards</div>
+        <div class="d">
+          Custom modules, OWL boards and the planning logic underneath — the thing
+          that replaces the spreadsheet nobody trusts.
+        </div>
+      </div>
+      <div class="svc">
+        <div class="t">Data pipelines &amp; report automation</div>
+        <div class="d">
+          Python on GitHub Actions into Looker Studio, Sheets and Power BI. The
+          report updates itself.
+        </div>
+      </div>
+      <div class="svc">
+        <div class="t">AI integration &amp; LLM features</div>
+        <div class="d">
+          Retrieval over your own data, tool-calling with a deliberate blast
+          radius, business rules in code rather than in a prompt.
+        </div>
+      </div>
+      <div class="svc">
+        <div class="t">Backend &amp; API development</div>
+        <div class="d">
+          NestJS and Node over PostgreSQL or MongoDB, organised so a feature can be
+          handed to one person.
+        </div>
+      </div>
+      <div class="svc">
+        <div class="t">React Native &amp; web apps</div>
+        <div class="d">
+          Production mobile apps and dense admin dashboards — React, Next.js,
+          Capacitor, shipped to both stores.
+        </div>
+      </div>
+      <div class="svc">
+        <div class="t">Real-time, encrypted &amp; e-commerce</div>
+        <div class="d">
+          WebRTC group calling, Signal Protocol E2EE, Magento and Stripe with one
+          source of truth for every price.
+        </div>
+      </div>
+    </div>
+
+    <h2><b>03</b> &nbsp;/&nbsp; Selected work</h2>
+    <div class="work">
+      <div>
+        <div class="t">Bravo Secure &mdash; OmniDevX Studio</div>
+        <div class="d">
+          Encrypted messenger and booking platform for security personnel.
+        </div>
+      </div>
+      <div class="tags accent">Signal &middot; WebRTC &middot; RN</div>
+    </div>
+    <div class="work">
+      <div>
+        <div class="t">Odoo 17 dashboard suite &mdash; Tex Fasteners</div>
+        <div class="d">
+          Twenty-plus live boards that replaced a factory's spreadsheet reporting.
+        </div>
+      </div>
+      <div class="tags" style="color: #d99a2b">Python &middot; OWL &middot; PG</div>
+    </div>
+    <div class="work">
+      <div>
+        <div class="t">Exzellent &mdash; learning platform, Cottbus</div>
+        <div class="d">
+          Courses, AI tutors and speech practice; web and both app stores from one
+          codebase.
+        </div>
+      </div>
+      <div class="tags" style="color: #8b5cf6">React &middot; Node &middot; Capacitor</div>
+    </div>
+    <div class="work">
+      <div>
+        <div class="t">Freight assistant &mdash; MKY Global Forwarding</div>
+        <div class="d">
+          Telegram, WhatsApp and web. The model may read; it may not decide.
+        </div>
+      </div>
+      <div class="tags" style="color: #2dd4bf">Node &middot; PG &middot; LLM</div>
+    </div>
+    <div class="work" style="border-bottom: none">
+      <div>
+        <div class="t">GuardMaster Fencing &mdash; OmniDevX Studio</div>
+        <div class="d">
+          US high-security fencing storefront with a full-matrix configurator.
+        </div>
+      </div>
+      <div class="tags" style="color: #eab308">Astro &middot; Magento 2</div>
+    </div>
+
+    <h2><b>04</b> &nbsp;/&nbsp; Stack</h2>
+    <p style="margin-top: 2.5mm; color: var(--muted); font-size: 8pt; line-height: 1.5">
+      Python &middot; JavaScript &middot; TypeScript &middot; SQL &middot; Odoo 17
+      (modules, ORM, OWL, QWeb/XML, Odoo.sh) &middot; NestJS &middot; Node.js
+      &middot; PostgreSQL &middot; MongoDB &middot; React &middot; Next.js &middot;
+      React Native &middot; Capacitor &middot; pandas &middot; NumPy &middot; Power
+      BI &middot; Looker Studio &middot; TensorFlow &middot; XGBoost &middot;
+      LangChain &middot; RAG &middot; MCP &middot; WebRTC &middot; mediasoup
+      &middot; Signal Protocol &middot; Stripe &middot; Mapbox &middot; Git &middot;
+      GitHub Actions &middot; Vercel &middot; Docker
+    </p>
+
+    <footer>
+      <div class="c"><span>Email</span>ariful81848@gmail.com</div>
+      <div class="c"><span>WhatsApp</span>+49 176 67221612</div>
+      <div class="c"><span>Portfolio</span>arifulislam-portfolio.vercel.app</div>
+      <div class="c"><span>GitHub</span>github.com/shanto173</div>
+      <div class="c"><span>LinkedIn</span>in/ariful-islam</div>
+    </footer>
+  </body>
+</html>

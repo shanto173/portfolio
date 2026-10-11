@@ -14,12 +14,15 @@ export const person = {
   status: "Open to work",
   email: "ariful81848@gmail.com",
   phone: "+49 176 67221612",
+  whatsapp: "https://wa.me/4917667221612",
+  whatsappLabel: "+49 176 67221612",
   github: "https://github.com/shanto173",
   githubHandle: "shanto173",
   linkedin: "https://www.linkedin.com/in/ariful-islam-9345041b9/",
   linkedinHandle: "in/ariful-islam",
   cv: "/cv/Ariful-Islam-CV.pdf",
   cvEuropass: "/cv/Ariful-Islam-CV-Europass.pdf",
+  flyer: "/cv/Ariful-Islam-flyer.pdf",
   portrait: "/ariful-islam.jpg",
 } as const;
 
@@ -39,10 +42,11 @@ export const sections = [
   { id: "experience", num: "02", label: "Experience" },
   { id: "impact", num: "03", label: "Impact" },
   { id: "projects", num: "04", label: "Projects" },
-  { id: "stack", num: "05", label: "Stack" },
-  { id: "education", num: "06", label: "Education" },
-  { id: "references", num: "07", label: "References" },
-  { id: "contact", num: "08", label: "Contact" },
+  { id: "services", num: "05", label: "Services" },
+  { id: "stack", num: "06", label: "Stack" },
+  { id: "education", num: "07", label: "Education" },
+  { id: "references", num: "08", label: "References" },
+  { id: "contact", num: "09", label: "Contact" },
 ] as const;
 
 export const boot = [
@@ -192,6 +196,8 @@ export type Shot = { src: string; alt: string; caption: string };
 
 export type Project = {
   id: string;
+  /** The /work/<slug> case-study route. */
+  slug: string;
   num: string;
   title: string;
   org: string;
@@ -203,6 +209,10 @@ export type Project = {
   note?: string;
   href?: string;
   hrefLabel?: string;
+  /** The long version, shown only on the case-study page. */
+  story?: { heading: string; body: string }[];
+  outcomes?: { value: string; label: string }[];
+  role?: string;
   /** The single glowing mockup on the project row. */
   mockup?: Shot;
   /** Everything the viewer shows when the mockup is clicked. */
@@ -213,6 +223,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "bravo-secure",
+    slug: "bravo-secure",
     num: "04.1",
     title: "Bravo Secure",
     org: "OmniDevX Studio",
@@ -227,6 +238,30 @@ export const projects: Project[] = [
     ],
     tags: ["SIGNAL PROTOCOL", "WEBRTC", "REACT NATIVE", "NESTJS", "STRIPE"],
     note: "Private repository.",
+    role: "Full-stack, at OmniDevX Studio.",
+    outcomes: [
+      { value: "400+", label: "production bugs fixed" },
+      { value: "51% → 74%", label: "messenger test coverage" },
+      { value: "6 → 10", label: "participants per group call" },
+    ],
+    story: [
+      {
+        heading: "What it is",
+        body: "A messenger and a booking platform in one app, for people who protect other people. The messaging half is Slack-shaped — channels, threads, search, file sharing. The booking half dispatches close-protection officers to missions, tracks them while they are out, and settles the money afterwards.",
+      },
+      {
+        heading: "Encryption that holds up",
+        body: "Messages use the Signal Protocol: X3DH to agree a key, the Double Ratchet to move it forward with every message, Sealed Sender so the server cannot see who is talking to whom. The hard part is not the cryptography, it is multi-device — the same conversation, decryptable on a phone and a tablet, still searchable, still editable, without the server ever holding a readable copy. Files go into an MFA-protected vault.",
+      },
+      {
+        heading: "Calls that ring when the app is dead",
+        body: "Group voice and video over WebRTC, routed through mediasoup so a call does not collapse as people join. It started at six participants and now holds ten. The part users actually notice is the ringing: an incoming call has to wake a killed app, which means CallKit on iOS and Android Telecom on the other side, not a push notification and a prayer.",
+      },
+      {
+        heading: "The unglamorous half",
+        body: "Four hundred production bugs, each taken from a device log to a root cause to a regression test that stops it coming back. The suite grew to roughly 1,430 tests and messenger coverage went from 51% to 74%. That number is the reason releases stopped being frightening.",
+      },
+    ],
     mockupShape: "phone",
     mockup: {
       src: "/work/bravo-messenger.png",
@@ -258,6 +293,7 @@ export const projects: Project[] = [
   },
   {
     id: "odoo-suite",
+    slug: "odoo-suite",
     num: "04.2",
     title: "Odoo 17 dashboard suite",
     org: "Tex Fasteners / Tex Zippers",
@@ -271,6 +307,30 @@ export const projects: Project[] = [
       "One RM Item Master drives every planning board, so planners maintain the item list in one place and nobody edits code to add an item.",
     ],
     tags: ["PYTHON", "OWL", "QWEB / XML", "POSTGRESQL", "ODOO.SH"],
+    role: "Designed and built, at Tex Fasteners.",
+    outcomes: [
+      { value: "20+", label: "live boards in daily use" },
+      { value: "40%", label: "fewer material shortages" },
+      { value: "2 hrs", label: "of manual reporting removed, daily" },
+    ],
+    story: [
+      {
+        heading: "Where it started",
+        body: "A zipper and metal-trims factory running on spreadsheets. Production pending, spares inventory, RM ageing, forecast probability, invoice tracking — each compiled by hand, each a week behind, and each quietly disagreeing with the others. Management was making decisions on numbers nobody could reconcile.",
+      },
+      {
+        heading: "One item master, not twenty",
+        body: "The first thing that had to go was the hard-coded item list. Every planning board now reads from a single RM Item Master, so a planner adds an item in one place and every board picks it up. Before that, adding an item meant editing code — which meant it did not happen, which meant the boards drifted from reality.",
+      },
+      {
+        heading: "Making the numbers agree",
+        body: "The production-pending and LC-received logic were both wrong in ways that inflated the figures management saw. Correcting them means the invoice tracker and the production board now reconcile order by order — the same order, the same number, on both screens. Monthly RM ageing was rebuilt back to 2021 from existing master data, which finally exposed how much 180-day stock was sitting still.",
+      },
+      {
+        heading: "Planning, not just reporting",
+        body: "Dashboards only tell you what happened. The planning tools tell you what is about to: sales order versus raw-material availability, forecast versus RM demand plan, consumption-driven stock runway, goods-in-transit. With re-order-level and demand models behind them, material shortages fell by 40%.",
+      },
+    ],
     note: "Boards include RM Item Movement, RM Ageing 180+, Ageing Monthly, Sales Revenue, Invoice Journey, Buyer Journey, FG Stock & LC Received Pending, Forecast vs Actual, Purchase Utilisation and the Organisation Chart.",
     mockupShape: "screen",
     mockup: {
@@ -304,6 +364,7 @@ export const projects: Project[] = [
   },
   {
     id: "exzellent",
+    slug: "exzellent",
     num: "04.3",
     title: "Exzellent",
     org: "Exzellent — Cottbus, Germany",
@@ -317,6 +378,26 @@ export const projects: Project[] = [
       "AI tutors and pronunciation practice over an LLM and Whisper, Stripe checkout, and Zoom and calendar booking for tutors.",
     ],
     tags: ["REACT 19", "NODE.JS", "MONGODB", "CAPACITOR", "STRIPE"],
+    role: "Growth & Automation, at Exzellent.",
+    outcomes: [
+      { value: "26", label: "owned API areas" },
+      { value: "1", label: "codebase for web, Android and iOS" },
+      { value: "54", label: "shared data models" },
+    ],
+    story: [
+      {
+        heading: "One codebase, three places",
+        body: "The React app is the website and, wrapped by Capacitor, the Android and iOS app as well. There is no second codebase to keep in step — whatever ships to the site is in the app on the next build. That is a deliberate constraint, and it is why a small change does not become a three-platform project.",
+      },
+      {
+        heading: "An API you can hand to one person",
+        body: "The Node API is split into twenty-six owned areas — accounts and auth, courses, enrolments, payments, booking, messaging, AI tools, speech, gamification, the internal ops console — each with its routes and controllers together and a README saying what it answers on. Adding a router is two lines in one file. The point is that a feature can be handed to one person without a handover meeting.",
+      },
+      {
+        heading: "The AI that teaches",
+        body: "AI tutors answer in the language being learned, and pronunciation practice runs speech through Whisper and scores it. Both sit behind the same quota middleware as everything else, because an AI feature that can be called without limit is a billing incident waiting to happen.",
+      },
+    ],
     mockupShape: "screen",
     mockup: {
       src: "/work/exzellent-student.jpg",
@@ -338,6 +419,7 @@ export const projects: Project[] = [
   },
   {
     id: "mky-chatbot",
+    slug: "mky-chatbot",
     num: "04.4",
     title: "Freight forwarding assistant",
     org: "MKY Global Forwarding",
@@ -351,6 +433,30 @@ export const projects: Project[] = [
       "Bookings, tracking by chassis number, document checks against what the file actually contains, Arabic and English, and an operations desk for the humans behind it.",
     ],
     tags: ["NODE.JS", "POSTGRESQL", "LLM TOOL-CALLING", "VERCEL"],
+    role: "Built end to end.",
+    outcomes: [
+      { value: "3", label: "channels on one engine" },
+      { value: "0", label: "booking tools offered to the model" },
+      { value: "2", label: "languages, Arabic and English" },
+    ],
+    story: [
+      {
+        heading: "The rule the whole thing rests on",
+        body: "The model may read, it may not decide. It reads a chassis number out of a sentence and answers questions from the company knowledge base. Whether a vehicle may be booked, which documents are outstanding, and whether a request goes to Operations are decided from rows in Postgres.",
+      },
+      {
+        heading: "Why that is enforcement, not a prompt",
+        body: "The booking tools are filtered out of the model tool list entirely. It is not instructed to avoid them; it is never offered them. A prompt can be argued with by a determined customer. A tool that was never on the list cannot be called, however the message is phrased.",
+      },
+      {
+        heading: "A state machine meets you first",
+        body: "Every message hits a deterministic flow before the model sees it. Bookings, tracking, document checks and handover to a human are machine paths with fixed outcomes. The model only runs when the machine has nothing to say — which is how a freight customer gets a confident answer about their shipment and a conversational one about customs.",
+      },
+      {
+        heading: "Arabic, properly",
+        body: "Not a translation layer bolted on. The flows, the quick replies, the generated document summaries and the operations desk all run in Arabic and English, including right-to-left rendering in the PDFs the bot produces.",
+      },
+    ],
     mockupShape: "phone",
     mockup: {
       src: "/work/mky-chat.png",
@@ -366,8 +472,74 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "inventory-automation",
+    id: "guardmaster",
+    slug: "guardmaster-fencing",
     num: "04.5",
+    title: "GuardMaster Fencing",
+    org: "OmniDevX Studio",
+    period: "2026 — present",
+    accent: "#eab308",
+    role: "Team project at OmniDevX Studio.",
+    summary:
+      "A high-security fencing storefront for the US market, with the configurator and quote estimator that sell it.",
+    bullets: [
+      "Headless commerce: an Astro storefront over Magento Open Source 2.4.9, with Magento the single source of truth for catalogue, prices, cart, tax and orders — the storefront never holds a second copy of a price.",
+      "A configurator across the full variant matrix — mesh aperture, panel height, fixing type, finish — priced live, and a quote estimator for the configurations that are made to order.",
+      "Prices are entered in ZAR and shown in USD by Magento's own conversion, with VAT inside the price rather than added on top, so no dollar figure is ever hand-typed into a template.",
+    ],
+    tags: ["ASTRO", "MAGENTO 2", "GRAPHQL", "E-COMMERCE", "VERCEL"],
+    note: "Built with the team at OmniDevX Studio — guardmasterfencing.com",
+    mockupShape: "screen",
+    mockup: {
+      src: "/work/guardmaster-catalogue.jpg",
+      alt: "GuardMaster Fencing catalogue page showing Clear View fencing panels with aperture options and a from-price.",
+      caption: "Catalogue — the Clear View system, priced by aperture and height.",
+    },
+    album: [
+      {
+        src: "/work/guardmaster-catalogue.jpg",
+        alt: "GuardMaster catalogue page with Clear View fencing panels, aperture options and a from-price.",
+        caption: "Catalogue — the Clear View system, priced by aperture and height.",
+      },
+      {
+        src: "/work/guardmaster-home.jpg",
+        alt: "GuardMaster Fencing home page showing the product range and navigation.",
+        caption: "Home — the range, the factory story and the quote path.",
+      },
+      {
+        src: "/work/guardmaster-estimator.jpg",
+        alt: "GuardMaster quote estimator for configuring a fence run and getting a price.",
+        caption: "Estimator — configure a run, get a price.",
+      },
+    ],
+    story: [
+      {
+        heading: "The problem",
+        body: "High-security fencing is not a catalogue product. The price depends on mesh aperture, panel height, fixing type and finish, and the combinations run into the hundreds. Quoting was done by hand, which meant a buyer could not find out what a fence cost without sending an email and waiting.",
+      },
+      {
+        heading: "The decision that shaped it",
+        body: "Magento owns commerce state and nothing else is allowed to. Price, stock, cart totals, tax, discounts, orders and customers live in Magento; the storefront is only an experience layer over its GraphQL API. No component fetches directly, and a price supplied by a browser is never trusted. That rule is why the configurator can be believed: every figure on screen came from the same place the order will.",
+      },
+      {
+        heading: "Currency and tax, done once",
+        body: "Factory prices are entered in ZAR, because that is where the factory is. The storefront displays USD, because the buyers are American, and Magento converts at its stored rate. VAT sits inside every price rather than being added at the end, and the “of which VAT” line is Magento's own calculation.",
+      },
+      {
+        heading: "Honesty as a constraint",
+        body: "No invented prices, stock levels or testimonials. A configuration Magento has no priced child for is shown as unavailable rather than guessed at. Stock is not tracked, so the site never claims a stock level. The South African delivery record belongs to the sister company, and the site says so.",
+      },
+    ],
+    outcomes: [
+      { value: "358", label: "anti-climb mesh system, fully configurable" },
+      { value: "ZAR → USD", label: "converted by Magento, never hand-typed" },
+      { value: "1", label: "source of truth for every price" },
+    ],
+  },
+  {
+    id: "inventory-automation",
+    slug: "inventory-automation",
+    num: "04.6",
     title: "Inventory Data Automation",
     org: "Open source",
     period: "2025",
@@ -376,7 +548,7 @@ export const projects: Project[] = [
       "A Python, GitHub Actions and Google APIs pipeline that keeps Looker Studio and Google Sheets reports live without anyone pressing refresh.",
     bullets: [
       "Scheduled jobs pull from Odoo, reshape in pandas and write straight into the sheets the reports are built on.",
-      "The only public repository of the five — the rest are client work.",
+      "The only public repository of the six — the rest are client work.",
     ],
     tags: ["PYTHON", "GITHUB ACTIONS", "GOOGLE APIS", "LOOKER STUDIO"],
     href: "https://github.com/shanto173/inventory_data_automation",

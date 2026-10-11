@@ -6,7 +6,7 @@ export default function References() {
   return (
     <Section
       id="references"
-      num="07"
+      num="08"
       label="References"
       title="People who have watched me work."
       lede="Four colleagues who can speak to what I actually did — the ERP work at Tex, the platform work at OmniDevX, and the learning platform at Exzellent."

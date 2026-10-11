@@ -175,6 +175,104 @@
   }
 }
 
+@layer components {
+  /* The boot splash is in the server-rendered HTML so it covers the first
+     paint. The inline script in <head> sets data-booted before anything is
+     drawn, so a returning visitor never sees a frame of it. */
+  :root[data-booted="1"] .boot {
+    display: none !important;
+  }
+
+  /* The splash animates in CSS so it runs before hydration. */
+  .boot-row {
+    opacity: 0.3;
+    animation: boot-in 0.3s ease-out forwards;
+    animation-delay: calc(var(--i) * 260ms);
+  }
+
+  .boot-ok {
+    opacity: 0;
+    animation: boot-in 0.3s ease-out forwards;
+    animation-delay: calc(var(--i) * 260ms + 120ms);
+  }
+
+  .boot-bar {
+    transform: scaleX(0);
+    animation: boot-bar 1.18s linear forwards;
+  }
+
+  .boot-ready {
+    opacity: 0;
+    animation: boot-in 0.4s ease-out forwards;
+    animation-delay: 1.18s;
+  }
+
+  @keyframes boot-in {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes boot-bar {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  /* The bespoke pointer. Only mounted for a fine pointer, and the real
+     cursor is only hidden once it is actually running. */
+  :root.has-cursor,
+  :root.has-cursor a,
+  :root.has-cursor button,
+  :root.has-cursor [role="button"] {
+    cursor: none;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 120;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .cursor-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .cursor-ring {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--muted);
+    border-radius: 999px;
+    transition:
+      opacity 0.25s,
+      width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.25s,
+      background-color 0.25s;
+  }
+
+  .cursor-ring[data-over="1"] {
+    width: 54px;
+    height: 54px;
+    border-color: var(--accent);
+    background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+
+  .cursor-ring[data-down="1"] {
+    width: 22px;
+    height: 22px;
+    border-color: var(--accent);
+  }
+}
+
 @layer utilities {
   .reveal {
     opacity: 0;

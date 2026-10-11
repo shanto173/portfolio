@@ -78,13 +78,13 @@ export default function Work() {
                 )}
               </div>
 
-              {project.mockup && project.album && (
+              {project.album && (
                 <ProjectMedia
-                  mockup={project.mockup}
                   album={project.album}
                   accent={project.accent}
                   shape={project.mockupShape ?? "screen"}
                   title={project.title}
+                  slug={project.slug}
                 />
               )}
             </Reveal>

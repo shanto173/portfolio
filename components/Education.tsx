@@ -21,7 +21,7 @@ export default function Education() {
   return (
     <Section
       id="education"
-      num="06"
+      num="07"
       label="Education"
       title="Studying it as well as doing it."
       alt

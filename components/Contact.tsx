@@ -3,6 +3,7 @@ import Reveal from "./Reveal";
 
 const links = [
   { label: "Email", value: person.email, href: `mailto:${person.email}` },
+  { label: "WhatsApp", value: person.whatsappLabel, href: person.whatsapp },
   { label: "LinkedIn", value: person.linkedinHandle, href: person.linkedin },
   { label: "GitHub", value: person.githubHandle, href: person.github },
   { label: "CV — one page", value: "PDF ↓", href: person.cv, download: true },
@@ -12,6 +13,7 @@ const links = [
     href: person.cvEuropass,
     download: true,
   },
+  { label: "Flyer", value: "PDF ↓", href: person.flyer, download: true },
   { label: "Based in", value: person.location, href: null },
 ];
 
@@ -21,7 +23,7 @@ export default function Contact() {
       <div className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-28">
         <Reveal>
           <p className="eyebrow">
-            <span className="text-accent">08</span>
+            <span className="text-accent">09</span>
             <span aria-hidden>/</span>
             <span>Contact</span>
           </p>
@@ -29,6 +31,20 @@ export default function Contact() {
           <h2 id="contact-heading" className="h-section mt-7">
             Write to me.
           </h2>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href={`mailto:${person.email}`} className="btn btn-solid">
+              Email me
+            </a>
+            <a
+              href={person.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="btn"
+            >
+              WhatsApp {person.whatsappLabel}
+            </a>
+          </div>
 
           <p className="mt-7 max-w-xl text-[1.0625rem] leading-relaxed text-muted text-pretty">
             I read everything. If you have an ERP report nobody trusts, a

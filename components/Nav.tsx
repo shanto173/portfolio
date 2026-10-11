@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { person, sections } from "@/lib/content";
 import ThemeToggle from "./ThemeToggle";
@@ -99,9 +100,15 @@ export default function Nav() {
           </ul>
 
           <div className="flex shrink-0 items-center gap-2">
-            <a href={person.cv} download className="btn hidden sm:inline-flex">
+            <a href={person.cv} download className="btn hidden lg:inline-flex">
               CV ↓
             </a>
+            <a href={person.flyer} download className="btn hidden lg:inline-flex">
+              Flyer ↓
+            </a>
+            <Link href="/know-me" className="btn hidden sm:inline-flex">
+              Know me
+            </Link>
             <ThemeToggle />
             <button
               type="button"
@@ -149,6 +156,30 @@ export default function Nav() {
               </li>
             ))}
             <li className="border-t border-line-soft">
+              <Link
+                href="/know-me"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-baseline gap-4 py-4"
+              >
+                <span className="label text-accent">↗</span>
+                <span className="font-display text-2xl font-bold tracking-tight">
+                  Know me
+                </span>
+              </Link>
+            </li>
+            <li className="border-t border-line-soft">
+              <Link
+                href="/services"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-baseline gap-4 py-4"
+              >
+                <span className="label text-accent">↗</span>
+                <span className="font-display text-2xl font-bold tracking-tight">
+                  All services
+                </span>
+              </Link>
+            </li>
+            <li className="border-t border-line-soft">
               <a
                 href={person.cv}
                 download
@@ -158,6 +189,19 @@ export default function Nav() {
                 <span className="label text-accent">↓</span>
                 <span className="font-display text-2xl font-bold tracking-tight">
                   Download CV
+                </span>
+              </a>
+            </li>
+            <li className="border-t border-line-soft">
+              <a
+                href={person.flyer}
+                download
+                onClick={() => setMenuOpen(false)}
+                className="flex items-baseline gap-4 py-4"
+              >
+                <span className="label text-accent">↓</span>
+                <span className="font-display text-2xl font-bold tracking-tight">
+                  Download flyer
                 </span>
               </a>
             </li>

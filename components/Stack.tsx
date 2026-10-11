@@ -6,7 +6,7 @@ export default function Stack() {
   return (
     <Section
       id="stack"
-      num="05"
+      num="06"
       label="Stack"
       title="The stack, in depth."
       lede="Everything here has been in something that went to production, not only in a tutorial."

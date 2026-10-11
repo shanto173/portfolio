@@ -3,7 +3,11 @@ import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
 import Impact from "@/components/Impact";
 import Work from "@/components/Work";
+import Services from "@/components/Services";
 import Stack from "@/components/Stack";
+import BootScreen from "@/components/BootScreen";
+import Cursor from "@/components/Cursor";
+import ScrollProgress from "@/components/ScrollProgress";
 import Education from "@/components/Education";
 import References from "@/components/References";
 import Contact from "@/components/Contact";
@@ -50,12 +54,16 @@ export default function Home() {
   return (
     <>
       <PersonSchema />
+      <BootScreen />
+      <ScrollProgress />
+      <Cursor />
       <Nav />
       <main className="relative z-10">
         <Hero />
         <Experience />
         <Impact />
         <Work />
+        <Services />
         <Stack />
         <Education />
         <References />

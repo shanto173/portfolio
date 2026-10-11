@@ -69,7 +69,8 @@ export const viewport: Viewport = {
  * Applies the stored theme before the first paint, so a light-mode visitor
  * never sees a black flash. Dark is the default when nothing is stored.
  */
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t}}catch(e){}})()`;
+const themeScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){d.dataset.theme=t}}catch(e){}
+try{var s=sessionStorage.getItem("booted")==="1";var r=matchMedia("(prefers-reduced-motion: reduce)").matches;if(s||r){d.dataset.booted="1"}}catch(e){}})()`;
 
 export default function RootLayout({
   children,
