@@ -2,7 +2,7 @@
 
 A single-page portfolio. Next.js App Router, Tailwind CSS v4, fully static, deployed on Vercel.
 
-**Live:** _(fill in once Vercel is connected)_
+**Live:** https://arifulislam-portfolio.vercel.app
 
 ---
 
@@ -62,9 +62,17 @@ Changing one here changes it everywhere.
 
 ## Deploying
 
-Push to `main` and Vercel builds and deploys. No environment variables are
-required. `NEXT_PUBLIC_SITE_URL` is optional and only sets the canonical URL in
-`<head>` and in `sitemap.xml` — set it if you point a custom domain at the site.
+Push to `main` and Vercel builds and deploys. The project is
+`portfolio` under `kamrul0628-gmailcom's projects`, linked to this repo.
+
+One production environment variable is set:
+
+| Variable               | Value                                      | Why                                                                   |
+| ---------------------- | ------------------------------------------ | --------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | `https://arifulislam-portfolio.vercel.app` | The canonical URL in `<head>`, in `sitemap.xml` and on the link preview |
+
+Point a custom domain at the site and that variable is the one to change,
+otherwise search engines keep being told the `.vercel.app` address is canonical.
 
 ## A note on the screenshots
 
